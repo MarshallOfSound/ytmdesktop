@@ -21,9 +21,13 @@ switch (process.platform) {
 
 if (!platform) throw new Error('Unsupported platform')
 
-const { status } = cp.spawnSync(npm, ['run', `deploy:${platform}`], {
-    cwd: path.resolve(__dirname, '..'),
-    stdio: 'inherit',
-})
+const { status } = cp.spawnSync(
+    npm,
+    ['run', `deploy:${platform}`, '--', '--publish=never'],
+    {
+        cwd: path.resolve(__dirname, '..'),
+        stdio: 'inherit',
+    }
+)
 
 process.exit(status)

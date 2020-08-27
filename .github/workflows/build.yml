@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
+      - run: yarn --frozen-lockfile
       - run: node ./script/build-current-platform.js
       - uses: actions/upload-artifact@v2
         with:
